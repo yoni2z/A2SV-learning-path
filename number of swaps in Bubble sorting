@@ -1,0 +1,12 @@
+def bubble_sort(list):
+    n = len(list)
+    count = 0
+    for i in range(0, n):
+        for j in range(0, n-1):
+            if (list[j] > list[j + 1]):
+                list[j], list[j + 1] = list[j + 1], list[j]
+                count += 1
+
+    print ("Array is sorted in " + str(count) + " swaps.")
+    print ("First Element: " + str(list[0]))
+    print ("Last Element: " + str(list[n - 1]))
