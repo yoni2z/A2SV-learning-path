@@ -1,0 +1,16 @@
+class Solution:
+    def check(self, nums: List[int]) -> bool:
+        A = sorted(nums)
+        x = []
+        for i in range(len(nums)):
+            if A[0] == nums[i]:
+                x.append(i)
+        for i in x:
+            count = 0        
+            for j in range(len(nums)):
+                if A[j] == nums[(j + i) % len(A)]:
+                   count += 1
+            if count == len(nums):
+                return True
+        return False
+        
