@@ -1,0 +1,24 @@
+n, k = map(int, input().split())
+nums = list(map(int, input().split()))
+
+nums.sort()
+count = 0
+nums = [1] + nums
+if (n == k or nums[k] != nums[k + 1]):
+    print(nums[k])
+else:
+    print(-1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
