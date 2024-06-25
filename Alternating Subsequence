@@ -1,0 +1,29 @@
+def maxsum(test):
+    results = []
+
+    for case in test:
+        n, a = case
+        maxSum = 0
+        i = 0
+        while i < n:
+            currMax = a[i]
+            while i < n and (a[i] >= 0) == (currMax >= 0):
+                currMax = max(currMax, a[i])
+                i+=1
+
+            maxSum += currMax
+        results.append(maxSum)
+
+    return results
+
+t = int(input())
+test = []
+for j in range(t):
+    n = int(input())
+    a = list(map(int, input().split()))
+    test.append((n,a))
+
+results = maxsum(test)
+
+for result in results:
+    print(result)
