@@ -1,0 +1,28 @@
+class Solution:
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+        nums.sort()
+        n = len(nums)
+        ans = []
+
+        for a in range(n - 3):
+            if a > 0 and nums[a] == nums[a - 1]:
+                continue
+
+            for b in range(a + 1, n - 2):
+                c = b + 1
+                d = n - 1
+                while c < d:
+                    sum = nums[a] + nums[b] + nums[c] + nums[d]
+                    val = [nums[a], nums[b], nums[c], nums[d]]
+                    val.sort()
+                    if sum == target:
+                        if val not in ans:
+                            ans.append(val)
+                        c += 1
+                        d -= 1
+                    elif sum < target:
+                        c += 1
+                    else:
+                        d -= 1
+
+        return ans
