@@ -1,0 +1,13 @@
+class Solution:
+    def divisorSubstrings(self, num: int, k: int) -> int:
+        numStr = str(num)
+        count = 0
+        j = k
+        for i in range(len(numStr) - k + 1):
+            subStr = numStr[i:j]
+            j += 1
+            div = int(subStr)
+            if (div != 0) and (num % div == 0):
+                count += 1
+
+        return count
