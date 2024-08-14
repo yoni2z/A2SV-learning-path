@@ -1,0 +1,26 @@
+class Solution:
+    def maxConsecutiveAnswers(self, answerKey: str, k: int) -> int:
+        n = len(answerKey)
+        maxLen = 0
+        countF = countT = 0
+        t = f = 0
+
+        for i in range(n):
+            if answerKey[i] == 'T':
+                countF += 1
+            else:
+                countT += 1
+
+            while countF > k:
+                if answerKey[f] == "T":
+                    countF -= 1
+                f += 1
+
+            while countT > k:
+                if answerKey[t] == "F":
+                    countT -= 1
+                t += 1
+
+            maxLen = max(maxLen, i - t + 1, i - f + 1)
+
+        return maxLen
