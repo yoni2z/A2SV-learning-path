@@ -1,0 +1,25 @@
+class Solution:
+    def numberOfSubarrays(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        countOdd = countNice = 0
+        temp = 0
+        j = 0
+
+        for i in range(n):
+            if nums[i] % 2 != 0:
+                countOdd += 1
+
+            while (countOdd > k):
+                if nums[j] % 2 != 0:
+                    countOdd -= 1
+                j += 1
+
+            if countOdd == k:
+                temp = 0
+                tempj = j
+                while (nums[tempj] % 2 == 0):
+                    temp += 1
+                    tempj += 1
+                countNice += temp + 1
+
+        return countNice
