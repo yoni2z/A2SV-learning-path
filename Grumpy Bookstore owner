@@ -1,0 +1,23 @@
+class Solution:
+    def maxSatisfied(self, customers: List[int], grumpy: List[int], minutes: int) -> int:
+        n = len(customers)
+        satisfied = 0
+        
+        for i in range(n):
+            if grumpy[i] == 0:
+                satisfied += customers[i]
+
+        maxAddSatisfied = 0
+        addSatisfied = 0
+
+        for i in range(n):
+
+            if (grumpy[i] == 1):
+                addSatisfied += customers[i]
+
+            if (i > minutes - 1 and grumpy[i - minutes] == 1):
+                addSatisfied -= customers[i - minutes]
+
+            maxAddSatisfied = max(maxAddSatisfied, addSatisfied)
+
+        return satisfied + maxAddSatisfied
