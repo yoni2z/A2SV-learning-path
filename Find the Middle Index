@@ -1,0 +1,17 @@
+class Solution:
+    def findMiddleIndex(self, nums: List[int]) -> int:
+        middleIndex = -1
+        n = len(nums)
+
+        for i in range(len(nums)):
+            if (i == 0 and sum(nums[i+1:]) == 0):
+                middleIndex = i
+                break
+            elif (i == n - 1 and sum(nums[:i]) == 0):
+                middleIndex = i
+                break
+            elif (sum(nums[:i]) == sum(nums[i+1:])):
+                middleIndex = i
+                break
+
+        return middleIndex
